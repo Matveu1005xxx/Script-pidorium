@@ -1,16 +1,16 @@
-package = '\''com.axlebolt.standoff2'\''
+package = 'com.axlebolt.standoff2'
 if gg.getTargetPackage() ~= package then
-    gg.alert('\''Запусти скрипт в игре Standoff 2!'\'')
+    gg.alert('Запусти скрипт в игре Standoff 2!')
     os.exit()
 end
 
 gg.setVisible(true)
 
-local url = '\''https://pastebin.com/raw/suE14ds6'\''
+local url = 'https://pastebin.com/raw/suE14ds6'
 local response = gg.makeRequest(url)
 
 if not response then
-    gg.alert('\''Нет подключения к интернету!'\'')
+    gg.alert('Нет подключения к интернету!')
     os.exit()
 end
 
@@ -30,10 +30,10 @@ function changeFov(value)
             v.freeze = false
         end
         gg.setValues(results)
-        gg.toast('\''FOV изменен на: '\'' .. value)
+        gg.toast('FOV изменен на: ' .. value)
         currentFov = modifiedValue
     else
-        gg.toast('\''Значение FOV не найдено'\'')
+        gg.toast('Значение FOV не найдено')
     end
     gg.clearResults()
 end
@@ -50,32 +50,32 @@ function resetFov()
             v.freeze = false
         end
         gg.setValues(results)
-        gg.toast('\''FOV сброшен на стандартный'\'')
+        gg.toast('FOV сброшен на стандартный')
         currentFov = defaultFov
     else
-        gg.toast('\''Значение FOV не найдено'\'')
+        gg.toast('Значение FOV не найдено')
     end
     gg.clearResults()
 end
 
 function FovMenu()
     local menu = gg.choice({
-        '\''Изменить FOV'\'',
-        '\''Сбросить FOV'\'',
-        '\''Назад'\''
-    }, nil, '\''Меню FOV'\'')
+        'Изменить FOV',
+        'Сбросить FOV',
+        'Назад'
+    }, nil, 'Меню FOV')
     
     if menu == 1 then
         local slider = gg.prompt({
-            '\''Введите значение FOV (1-180):'\''
-        }, {90}, {'\''number'\''})
+            'Введите значение FOV (1-180):'
+        }, {90}, {'number'})
         
         if slider and slider[1] then
             local value = tonumber(slider[1])
             if value and value >= 1 and value <= 180 then
                 changeFov(value)
             else
-                gg.alert('\''Допустимые значения: 1-180'\'')
+                gg.alert('Допустимые значения: 1-180')
             end
         end
     elseif menu == 2 then
@@ -85,9 +85,9 @@ end
 
 function MainMenu()
     local menu = gg.choice({
-        '\''FOV'\'',
-        '\''Выход'\''
-    }, nil, '\''t.me/Zalupium and qwertx_crack'\'')
+        'FOV',
+        'Выход'
+    }, nil, 'Standoff 2 FOV Changer')
     
     if menu == 1 then
         FovMenu()
@@ -96,7 +96,7 @@ function MainMenu()
     end
 end
 
-gg.toast('\''cum to my ass pls'\'')
+gg.toast('Standoff 2 FOV Changer активирован')
 while true do
     if gg.isVisible() then
         gg.setVisible(false)
